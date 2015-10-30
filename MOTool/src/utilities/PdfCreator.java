@@ -16,19 +16,50 @@
  *
  *	Sourcecode available at: https://github.com/Felck/MOTool
  */
+
 package utilities;
 
-/**
- * @author Tim
- *
- */
-public class PdfCreator {
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
-	/**
-	 * 
-	 */
-	public PdfCreator() {
-		// TODO Auto-generated constructor stub
+import java.io.FileOutputStream;
+
+public class PdfCreator {
+	
+	String fileName;
+	Document document;
+	
+	public PdfCreator(String fileName) {
+		this.fileName = fileName;
 	}
+	
+	public void createPdf(){
+		//create new Document
+		this.document = new Document();
+		
+		try{
+			//creation of the pdf writer with the file output name
+			PdfWriter.getInstance(document, new FileOutputStream(this.fileName));
+			
+			//open the document so you can work with it
+			document.open();
+			
+			//preparation of the content of the document
+			Paragraph para = new Paragraph();
+			para.add("This is super awesome!");
+			
+			//add the content to the document
+			document.add(para);
+			document.close();
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	
+	
 
 }
