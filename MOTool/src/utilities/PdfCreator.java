@@ -21,6 +21,11 @@ package utilities;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
+//import com.itextpdf.text.Rectangle;
+//import com.itextpdf.text.Utilities;
+import com.itextpdf.text.PageSize;
+
+
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileOutputStream;
@@ -34,9 +39,27 @@ public class PdfCreator {
 		this.fileName = fileName;
 	}
 	
-	public void createPdf(){
+	public void createTestPdf(){
 		//create new Document
-		this.document = new Document();
+		document = new Document();
+		
+		/* 
+		 * influence the size of the document, not needed but helpful
+		 * para1 == width
+		 * para2 == height
+		 * the unit is called user unit --> 72 == 1 inch
+		 * 								--> to measure in cm/mm use the utilities class provided by itextpdf				
+		 *		
+  		 * float width  = Utilities.millimetersToPoints(100);
+		 * float height = Utilities.millimetersToPoints(200);
+		 *
+		 * Rectangle rectangle = new Rectangle(width, height);
+		 * 
+		 * also with PageSize you can use common formats
+		 * Rectangle rectangle = new Rectangle(PageSize.A4);
+		 */
+
+		document.setPageSize(PageSize.A4);
 		
 		try{
 			//creation of the pdf writer with the file output name
@@ -59,6 +82,14 @@ public class PdfCreator {
 		
 	}
 	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	
 	
 
