@@ -31,9 +31,8 @@ public class Participant {
 	boolean attendance;
 	String room;
 
-	/**
-	 * Constructor
-	 */
+	public Participant() {}
+
 	public Participant(int id, String surname, String forename, int grade, String school, int[] points, int position,
 			int price, boolean attendance, String room) {
 		this.id = id;
@@ -48,9 +47,6 @@ public class Participant {
 		this.room = room;
 	}
 
-	/**
-	 * Constructor
-	 */
 	public Participant(int id, String surname, String forename, int grade, String school) {
 		this.id = id;
 		this.surname = surname;
